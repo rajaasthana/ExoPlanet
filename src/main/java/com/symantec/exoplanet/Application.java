@@ -1,11 +1,10 @@
 package com.symantec.exoplanet;
 
-import static com.symantec.exoplanet.util.Constants.JSON_FILE_PATH;
-
 import java.util.List;
 
 import com.symantec.exoplanet.exception.NoPlanetException;
 import com.symantec.exoplanet.model.Planet;
+import com.symantec.exoplanet.util.Constants;
 
 /**
  * Represents the Main class for Exo-Planet Application.
@@ -20,7 +19,7 @@ public class Application {
 	 */
 	public static void main(String[] args) {
 		
-		List<Planet> planets = ExoPlanetHelper.getInstance().getPlanetsFromFile(JSON_FILE_PATH);
+		List<Planet> planets = ExoPlanetHelper.getInstance().getPlanetsFromFile(Constants.JSON_FILE_PATH);
 		
 		printOrphanPlanetCount(planets);
 		printHottestPlanet(planets);
