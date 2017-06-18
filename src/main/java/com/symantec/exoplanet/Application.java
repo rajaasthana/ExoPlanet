@@ -34,7 +34,8 @@ public class Application {
 	 */
 	private static void printOrphanPlanetCount(List<Planet> planets) {
 		try{
-			System.out.println(ExoPlanetHelper.getInstance().getOrphanPlanetCount(planets));
+			
+			System.out.println("Orphan Planet Count: " + ExoPlanetHelper.getInstance().getOrphanPlanetCount(planets) + Constants.NEW_LINE);
 		} catch(NoPlanetException ex){
 			System.out.println(ex.getMessage());
 		}
@@ -47,7 +48,7 @@ public class Application {
 	 */
 	private static void printHottestPlanet(List<Planet> planets) {
 		try{
-			System.out.println(ExoPlanetHelper.getInstance().getHottestPlanetName(planets));
+			System.out.println("Hottest Planet in the Universe: " + ExoPlanetHelper.getInstance().getHottestPlanetName(planets) + Constants.NEW_LINE);
 		}catch(NoPlanetException ex){
 			System.out.println(ex.getMessage());
 		}
@@ -63,6 +64,7 @@ public class Application {
 	 */
 	private static void printDiscoveryTimeline(List<Planet> planets) {
 		try{
+			System.out.println("Discovery Timeline");
 			System.out.println(ExoPlanetHelper.getInstance().getDiscoveryTimeline(planets));
 		} catch(NoPlanetException ex){
 			System.out.println(ex.getMessage());

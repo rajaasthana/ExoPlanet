@@ -97,7 +97,6 @@ public class ExoPlanetHelper {
 		if(Util.isNullOrEmpty(planets)){
 			throw new NoPlanetException("No Planets available in the universe!!");
 		}
-
 		return planets.stream().max((p1, p2) -> Integer.compare(p1.getHostStarTempK(), p2.getHostStarTempK())).get()
 				.getPlanetName();
 	}
@@ -118,9 +117,17 @@ public class ExoPlanetHelper {
 		}
 		Map<Integer, Map<String, Long>> timelineMap = planets.stream().collect(Collectors.groupingBy(
 				Planet::getDiscoveryYear, Collectors.groupingBy(Planet::getPlanetSize, Collectors.counting())));
-
-		final StringBuilder out = new StringBuilder();
 		
+		return constructTimelineText(timelineMap);
+	}
+
+	/**
+	 * Helper method to construct timeline string from the timeline map
+	 * @param timelineMap
+	 * @return timeline string
+	 */
+	private String constructTimelineText(Map<Integer, Map<String, Long>> timelineMap) {
+		final StringBuilder out = new StringBuilder();
 		out.append(YEAR).append(TAB).append(SMALL).append(TAB).append(MEDIUM).append(TAB).append(LARGE).append(NEW_LINE);
 		timelineMap.forEach((key, value) -> {
 			out.append(Util.getValue(key, YEAR_NA)).append(TAB);
