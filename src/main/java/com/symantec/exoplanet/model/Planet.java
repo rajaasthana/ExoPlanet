@@ -3,6 +3,11 @@ package com.symantec.exoplanet.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Model class to map JSON data
+ * @author Raja Asthana
+ * @since Jun 2017
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Planet {
 	

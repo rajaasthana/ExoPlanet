@@ -1,5 +1,10 @@
 package com.symantec.exoplanet.util;
 
+/**
+ * Holds Constant values for Exo-Planet application
+ * @author Raja Asthana
+ * @since Jun 2017
+ */
 public class Constants {
 
 	public static final String JSON_FILE_PATH = "exoplanets.json";

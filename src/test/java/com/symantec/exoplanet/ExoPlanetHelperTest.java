@@ -11,6 +11,11 @@ import com.symantec.exoplanet.ExoPlanetHelper;
 import com.symantec.exoplanet.exception.NoPlanetException;
 import com.symantec.exoplanet.model.Planet;
 
+/**
+ * Test Class for Exo-Planet helper
+ * @author Raja Asthana
+ * @since Jun 2017
+ */
 public class ExoPlanetHelperTest {
 
 	@Test

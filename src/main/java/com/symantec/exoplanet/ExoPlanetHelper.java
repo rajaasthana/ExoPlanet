@@ -22,15 +22,27 @@ import com.symantec.exoplanet.model.Planet;
 import com.symantec.exoplanet.util.Constants;
 import com.symantec.exoplanet.util.Util;
 
+/**
+ * Singleton helper class to perform business logic
+ * @author Raja Asthana
+ * @since Jun 2017
+ */
 public class ExoPlanetHelper {
 	
 	private static ExoPlanetHelper helper = null;
 	private static ObjectMapper mapper = null;
 	
+	/**
+	 * Private Constructor
+	 */
 	private ExoPlanetHelper() {
 		mapper = new ObjectMapper();
 	}
 	
+	/**
+	 * Method to instantiate Helper class - Singleton
+	 * @return ExoPlanetHelper
+	 */
 	public static synchronized ExoPlanetHelper getInstance(){
 		if(null == helper){
 			helper = new ExoPlanetHelper();
@@ -38,6 +50,11 @@ public class ExoPlanetHelper {
 		return helper;
 	}
 
+	/**
+	 * Loads the JSON file from the given path and parses the same and returns List of Planets
+	 * @param filePath
+	 * @return List<Planet>
+	 */
 	public List<Planet> getPlanetsFromFile(String filePath){
 		List<Planet> planets = null;
 		try {
@@ -52,6 +69,13 @@ public class ExoPlanetHelper {
 		return planets;
 	}
 	
+	/**
+	 * Gets the list of orphan planet from the array of planets.
+	 * Throws NoPlanetException when there are no planet to search from.
+	 * @param planets
+	 * @return count
+	 * @throws NoPlanetException
+	 */
 	public int getOrphanPlanetCount(List<Planet> planets) throws NoPlanetException{
 		if(Util.isNullOrEmpty(planets)){
 			throw new NoPlanetException("No Planets available in the universe!!");
@@ -62,6 +86,13 @@ public class ExoPlanetHelper {
 				.count();
 	}
 	
+	/**
+	 * Gets the Hottest planet from the array of planets.
+	 * Throws NoPlanetException when there are no planet to search from.
+	 * @param planets
+	 * @return planetName
+	 * @throws NoPlanetException
+	 */
 	public String getHottestPlanetName(List<Planet> planets) throws NoPlanetException {
 		if(Util.isNullOrEmpty(planets)){
 			throw new NoPlanetException("No Planets available in the universe!!");
@@ -71,6 +102,16 @@ public class ExoPlanetHelper {
 				.getPlanetName();
 	}
 	
+	/**
+	 * Gets the number of planets discovered year-wise grouped by count
+	 * Planet is considered 
+	 * 	"small" - If the Jupiter radii < 1,
+	 * 	“medium” - If the Jupiter radii < 2
+	 *  "large" - Otherwise
+	 * @param planets
+	 * @return Timeline String
+	 * @throws NoPlanetException
+	 */
 	public String getDiscoveryTimeline(List<Planet> planets) throws NoPlanetException {
 		if(Util.isNullOrEmpty(planets)){
 			throw new NoPlanetException("No Planets available in the universe!!");
@@ -90,6 +131,5 @@ public class ExoPlanetHelper {
 			out.append(NEW_LINE);
 		});
 		return out.toString();
-
 	}
 }
